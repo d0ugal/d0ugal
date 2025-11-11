@@ -1,5 +1,7 @@
 ## Hi there 👋
 
+![stats](https://github-readme-stats.vercel.app/api?username=d0ugal&show_icons=true&theme=transparent)
+
 <!--
 **d0ugal/d0ugal** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
