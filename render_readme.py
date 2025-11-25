@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 try:
-    from jinja2 import Template
     from dateutil.easter import easter
+    from jinja2 import Template
 except ImportError as e:
     print(f"Error: Required package not installed: {e}", file=sys.stderr)
     print("Install with: uv pip install jinja2 python-dateutil", file=sys.stderr)
@@ -105,4 +105,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -2,8 +2,8 @@ name: Update Profile README
 
 on:
   schedule:
-    # Run daily at 00:00 UTC
-    - cron: '0 0 * * *'
+    # Run at greeting change boundaries: 5:00 (morning), 12:00 (afternoon), 17:00 (evening), 21:00 (night)
+    - cron: '0 5,12,17,21 * * *'
   workflow_dispatch: # Allow manual triggering
 
 jobs:
