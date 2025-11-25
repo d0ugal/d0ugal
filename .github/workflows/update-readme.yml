@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PROFILE_REPO_TOKEN }}
 
       - name: Build Docker image
         run: |
@@ -30,10 +30,13 @@ jobs:
             d0ugal-readme-renderer
 
       - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_REPO_TOKEN }}
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "dougal@dougalmatthews.com"
+          git config --local user.name "Dougal Matthews"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/d0ugal/d0ugal.git
           git add README.md
           git diff --staged --quiet || git commit -m "chore: update README with current weekday"
-          git push
+          git push origin HEAD:main
 
