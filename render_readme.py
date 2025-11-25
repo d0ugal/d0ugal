@@ -33,14 +33,19 @@ def get_seasonal_emoji(now):
     day = now.day
     year = now.year
     date = now.date()
+    day_of_year = now.timetuple().tm_yday
 
-    # December
+    # December - Christmas emojis
+    christmas_emojis = ["🎄", "🎅", "❄️", "☃️", "🎁", "🔔", "🦌", "🌟", "✨", "🎄"]
     if month == 12:
-        return "🎄"
+        random.seed(day_of_year)
+        return random.choice(christmas_emojis)
 
     # 2 weeks before Halloween (October 31) = around October 17
+    halloween_emojis = ["🎃", "👻", "🦇", "🕷️", "🕸️", "💀", "🧙", "🧛", "🧟", "🎃"]
     if month == 10 and 15 <= day <= 31:
-        return "🎃"
+        random.seed(day_of_year)
+        return random.choice(halloween_emojis)
 
     # 2 weeks before Easter
     easter_date = easter(year)
