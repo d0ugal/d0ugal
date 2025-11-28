@@ -1,1 +1,1 @@
-# Good night! Happy Friday! ☕
+# Good evening, happy Friday! ☕
