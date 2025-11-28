@@ -21,10 +21,8 @@ def get_greeting():
         return "Good morning"
     elif 12 <= hour < 17:
         return "Good afternoon"
-    elif 17 <= hour < 21:
-        return "Good evening"
     else:
-        return "Good night"
+        return "Good evening"
 
 
 def get_seasonal_emoji(now):
