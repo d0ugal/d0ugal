@@ -1,1 +1,1 @@
-# Good night! Happy Thursday! ☕
+# Good morning! Happy Friday! ☕
