@@ -40,4 +40,3 @@ jobs:
           git add README.md
           git diff --staged --quiet || git commit -m "chore: update README with current weekday"
           git push origin HEAD:main
-
