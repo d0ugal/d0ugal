@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Render README.md from Jinja2 template."""
+
 import random
 import sys
 from datetime import datetime, timedelta

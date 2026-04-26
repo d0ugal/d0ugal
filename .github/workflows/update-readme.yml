@@ -1,42 +1,42 @@
 name: Update Profile README
 
 on:
-  push:
-  schedule:
-    # Run at greeting change boundaries: 5:00 (morning), 12:00 (afternoon), 17:00 (evening), 21:00 (night)
-    - cron: '0 5,12,17,21 * * *'
-  workflow_dispatch: # Allow manual triggering
+    push:
+    schedule:
+        # Run at greeting change boundaries: 5:00 (morning), 12:00 (afternoon), 17:00 (evening), 21:00 (night)
+        - cron: "0 5,12,17,21 * * *"
+    workflow_dispatch: # Allow manual triggering
 
 jobs:
-  update-readme:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    update-readme:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PROFILE_REPO_TOKEN }}
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  token: ${{ secrets.PROFILE_REPO_TOKEN }}
 
-      - name: Build Docker image
-        run: |
-          docker build -t d0ugal-readme-renderer .
+            - name: Build Docker image
+              run: |
+                  docker build -t d0ugal-readme-renderer .
 
-      - name: Render README
-        run: |
-          docker run --rm \
-            -v "$PWD:/workspace" \
-            -w /workspace \
-            d0ugal-readme-renderer
+            - name: Render README
+              run: |
+                  docker run --rm \
+                    -v "$PWD:/workspace" \
+                    -w /workspace \
+                    d0ugal-readme-renderer
 
-      - name: Commit changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.PROFILE_REPO_TOKEN }}
-        run: |
-          git config --local user.email "dougal@dougalmatthews.com"
-          git config --local user.name "Dougal Matthews"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/d0ugal/d0ugal.git
-          git add README.md
-          git diff --staged --quiet || git commit -m "chore: update README with current weekday"
-          git push origin HEAD:main
+            - name: Commit changes
+              env:
+                  GITHUB_TOKEN: ${{ secrets.PROFILE_REPO_TOKEN }}
+              run: |
+                  git config --local user.email "dougal@dougalmatthews.com"
+                  git config --local user.name "Dougal Matthews"
+                  git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/d0ugal/d0ugal.git
+                  git add README.md
+                  git diff --staged --quiet || git commit -m "chore: update README with current weekday"
+                  git push origin HEAD:main
