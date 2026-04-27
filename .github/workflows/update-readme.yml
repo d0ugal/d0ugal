@@ -2,6 +2,8 @@ name: Update Profile README
 
 on:
     push:
+        branches:
+            - main
     schedule:
         # Run at greeting change boundaries: 5:00 (morning), 12:00 (afternoon), 17:00 (evening), 21:00 (night)
         - cron: "0 5,12,17,21 * * *"
